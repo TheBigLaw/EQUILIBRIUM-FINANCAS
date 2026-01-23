@@ -1,5 +1,10 @@
 let dados = [];
 let chart;
+const tipo = document.getElementById("tipo");
+const categoria = document.getElementById("categoria");
+const subcategoria = document.getElementById("subcategoria");
+const descricao = document.getElementById("descricao");
+const valor = document.getElementById("valor");
 
 // MENU
 document.getElementById("menuToggle").addEventListener("click", () => {
