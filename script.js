@@ -1,4 +1,4 @@
-let dados = JSON.parse(localStorage.getItem("dadosFinanceiros")) || [];
+let dados = [];
 let chart;
 
 // MENU
