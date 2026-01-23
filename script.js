@@ -27,19 +27,23 @@ function salvar(e) {
   e.preventDefault();
 
   const novo = {
-    tipo: document.getElementById("tipo").value,
-    categoria: document.getElementById("categoria").value,
-    sub: document.getElementById("subcategoria").value,
-    descricao: document.getElementById("descricao").value,
-    valor: Number(document.getElementById("valor").value)
+    tipo: tipo.value,
+    categoria: categoria.value,
+    sub: subcategoria.value,
+    descricao: descricao.value,
+    valor: Number(valor.value),
+    criadoEm: firebase.firestore.FieldValue.serverTimestamp()
   };
 
-  dados.push(novo);
-  localStorage.setItem("dadosFinanceiros", JSON.stringify(dados));
-
-  e.target.reset();
-  atualizarTudo();
+  db.collection("users")
+    .doc(userId)
+    .collection("lancamentos")
+    .add(novo)
+    .then(() => {
+      e.target.reset();
+    });
 }
+
 
 // ATUALIZAÇÕES
 function atualizarTudo() {
