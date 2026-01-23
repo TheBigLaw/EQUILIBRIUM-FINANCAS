@@ -53,7 +53,7 @@ function carregarDados() {
   db.collection("users")
     .doc(userId)
     .collection("lancamentos")
-    .orderBy("criadoEm", "asc")
+    .orderBy("valor", "asc"))
     .onSnapshot(snapshot => {
       dados = snapshot.docs.map(doc => doc.data());
       atualizarTudo();
