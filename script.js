@@ -60,6 +60,7 @@ function carregarDados() {
     });
 }
 
+
 // ATUALIZAÇÕES
 function atualizarTudo() {
   atualizarDashboard();
@@ -129,6 +130,3 @@ function atualizarGrafico() {
     }
   });
 }
-
-// INICIALIZA
-atualizarTudo();
