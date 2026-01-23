@@ -37,7 +37,7 @@ function salvar(e) {
     sub: subcategoria.value,
     descricao: descricao.value,
     valor: Number(valor.value),
-    criadoEm: firebase.firestore.FieldValue.serverTimestamp()
+    criadoEm: new Date()
   };
 
   db.collection("users")
