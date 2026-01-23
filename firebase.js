@@ -1,8 +1,8 @@
 // CONFIGURAÇÃO
 firebase.initializeApp({
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_DOMINIO.firebaseapp.com",
-  projectId: "SEU_PROJECT_ID"
+  apiKey: "AIzaSyA-VlrQcVxkoiAjOAIEFXrX_RYjN2Bf-WE",
+  authDomain: "financasequilibrium-7c2b4.firebaseapp.com",
+  projectId: "financasequilibrium-7c2b4"
 });
 
 const auth = firebase.auth();
