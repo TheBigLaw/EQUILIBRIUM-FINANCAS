@@ -52,7 +52,8 @@ body {
 .dashboard-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
+  margin: 25px 0 20px 0; /* ⬅ afasta do topo */
 }
 
 .logo {
