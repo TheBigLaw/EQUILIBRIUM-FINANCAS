@@ -44,6 +44,16 @@ function salvar(e) {
     });
 }
 
+function carregarDados() {
+  db.collection("users")
+    .doc(userId)
+    .collection("lancamentos")
+    .orderBy("criadoEm", "asc")
+    .onSnapshot(snapshot => {
+      dados = snapshot.docs.map(doc => doc.data());
+      atualizarTudo();
+    });
+}
 
 // ATUALIZAÇÕES
 function atualizarTudo() {
