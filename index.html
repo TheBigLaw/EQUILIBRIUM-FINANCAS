@@ -1,318 +1,102 @@
-<!DOCTYPE 
-html><html lang="pt-BR" data-lt-installed="true"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Renda Imediata 6D | Do Zero aos R$100 Mil em 6 Dias</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <style type="text/css">/* Chart.js */
-@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Financeiro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <h1>Método Renda Imediata <span>6D</span></h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#method">O Método</a></li>
-                <li><a href="#specialists">Especialistas</a></li>
-                <li><a href="#phases">As 6 Fases</a></li>
-                <li><a href="#results">Resultados</a></li>
-                <li><a href="#testimonials">Depoimentos</a></li>
-                <li><a href="#guarantee">Garantia</a></li>
-                <!-- FAQ Link Removido -->
-            </ul>
-            <a href="#checkout" class="btn-cta">Quero Começar Agora</a>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
+
+<div class="layout">
+
+  <!-- MENU LATERAL -->
+  <aside class="menu" id="menu">
+    <h2>Financeiro</h2>
+    <button data-target="dashboard">Dashboard</button>
+    <button data-target="lancamentos">Lançamentos</button>
+    <button data-target="relatorios">Relatórios</button>
+    <button data-target="planilha">Planilha</button>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="conteudo">
+
+    <header class="topo">
+      <button class="menu-btn" id="menuToggle">☰</button>
+      <span>Painel Financeiro Empresarial</span>
     </header>
 
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Do Zero aos Primeiros <span>R$100.000</span> em Apenas <span>6 Dias</span></h1>
-                    <p>O único método passo a passo que combina estratégias de marketing, investimentos e finanças para criar um produto digital lucrativo mesmo se você estiver começando do absoluto zero</p>
-                    <div class="countdown-timer">
-                        <p>Oferta especial encerra em:</p>
-                        <div class="timer">
-                            <div class="time-block">
-                                <span id="hours">23</span>
-                                Horas
-                            </div>
-                            <div class="time-block">
-                                <span id="minutes">59</span>
-                                Minutos
-                            </div>
-                            <div class="time-block">
-                                <span id="seconds">59</span>
-                                Segundos
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#checkout" class="btn-primary">QUERO GERAR R$100 MIL EM 6 DIAS</a>
-                    <p class="cta-subtext">Acesso imediato + Bônus exclusivos por tempo limitado</p>
-                </div>
-                <div class="hero-image">
-                    <img src="IMG1.png" alt="Homem sorrindo com laptop e gráficos financeiros">
-                </div>
-            </div>
-        </div>
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="secao ativa">
+
+      <div class="dashboard-header">
+        <!-- LOGO -->
+        <img src="assets/logo.png" class="logo" alt="Logo">
+
+        <!-- FLATICON -->
+        <img src="assets/icon.png" class="icone" alt="Ícone">
+      </div>
+
+      <div class="cards">
+        <div class="card">Entradas<br><strong id="entradas">R$ 0</strong></div>
+        <div class="card">Saídas<br><strong id="saidas">R$ 0</strong></div>
+        <div class="card">Saldo<br><strong id="saldo">R$ 0</strong></div>
+      </div>
+
+      <canvas id="grafico"></canvas>
+
     </section>
 
-    <section id="method">
-        <div class="container">
-            <h2>O Que é o Método Renda Imediata 6D?</h2>
-            <p class="section-subtitle">Um sistema completo e testado para criar, lançar e escalar um produto digital lucrativo em tempo recorde</p>
-            <div class="method-content">
-                <div class="method-image-placeholder">
-                    <img src="site1.png" alt=" ">
-                </div>
-                <div class="method-text">
-                    <p>O <strong>Método Renda Imediata 6D</strong> é um sistema revolucionário que combina as estratégias mais avançadas de marketing digital, investimentos e finanças para criar um negócio online altamente lucrativo em apenas 6 dias.</p>
-                    <p>Desenvolvido por três especialistas com mais de 50 anos de experiência combinada, este método foi testado e comprovado por centenas de alunos que conseguiram gerar resultados extraordinários mesmo começando do absoluto zero.</p>
-                    <p>Diferente de outros cursos que prometem resultados rápidos mas entregam apenas teoria, o Método 6D é 100% prático e focado em implementação. Cada fase foi cuidadosamente projetada para ser executada em um único dia, permitindo que você vá do zero aos primeiros R$100.000 em menos de uma semana.</p>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Sem necessidade de experiência prévia</li>
-                        <li><i class="fas fa-check-circle"></i> Funciona para qualquer nicho lucrativo</li>
-                        <li><i class="fas fa-check-circle"></i> Resultados em 48-72 horas</li>
-                        <li><i class="fas fa-check-circle"></i> Investimento inicial mínimo</li>
-                        <li><i class="fas fa-check-circle"></i> Escalável para 6-7 dígitos</li>
-                        <li><i class="fas fa-check-circle"></i> Suporte completo na implementação</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <!-- LANÇAMENTOS -->
+    <section id="lancamentos" class="secao">
+
+      <h2>Novo Lançamento</h2>
+
+      <form id="formLancamento">
+        <select id="tipo">
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+        </select>
+
+        <input id="categoria" placeholder="Categoria" required>
+        <input id="subcategoria" placeholder="Subcategoria">
+        <textarea id="descricao" placeholder="Descrição"></textarea>
+        <input type="number" id="valor" placeholder="Valor" required>
+
+        <button type="submit">Salvar</button>
+      </form>
+
     </section>
 
-    <section id="specialists">
-        <div class="container">
-            <h2>Conheça o Especialista Por Trás do Método</h2>
-            <p class="section-subtitle">Experiência e Resultados Comprovados</p>
-            <div class="specialists-grid">
-                <div class="specialist-card">
-                    <img src="img/andre_marques_placeholder.jpg" alt="André Marques">
-                    <h3>André Marques</h3>
-                    <h4>Especialista Principal</h4>
-                    <p>[Insira aqui a descrição detalhada sobre André Marques, sua experiência e resultados...]</p>
-                    <div class="specialist-stats">
-                        <div><span>XX+</span> Anos de Experiência</div>
-                        <div><span>R$YYM+</span> Em Resultados Gerados</div>
-                        <div><span>ZZZ+</span> Clientes/Alunos</div>
-                    </div>
-                </div>
-                <!-- Outros especialistas removidos -->
-            </div>
-        </div>
+    <!-- RELATÓRIOS -->
+    <section id="relatorios" class="secao">
+      <h2>Relatório Financeiro</h2>
+      <div id="textoRelatorio"></div>
     </section>
 
-    <section id="phases">
-        <div class="container">
-            <h2>As 6 Fases do Método</h2>
-            <p class="section-subtitle">Um sistema passo a passo para resultados extraordinários em tempo recorde</p>
-            <div class="phases-timeline">
-                <div class="phase-item">
-                    <div class="phase-number">1</div>
-                    <div class="phase-content">
-                        <h3>Descobrir</h3>
-                        <p>Identificar nichos lucrativos e validar ideias com potencial de 6 dígitos.</p>
-                    </div>
-                </div>
-                <div class="phase-item">
-                    <div class="phase-number">2</div>
-                    <div class="phase-content">
-                        <h3>Decidir</h3>
-                        <p>Escolher o formato ideal do produto e definir a estratégia de precificação.</p>
-                    </div>
-                </div>
-                <div class="phase-item">
-                    <div class="phase-number">3</div>
-                    <div class="phase-content">
-                        <h3>Desenhar</h3>
-                        <p>Criar uma oferta irresistível e uma página de vendas de alta conversão.</p>
-                    </div>
-                </div>
-                <div class="phase-item">
-                    <div class="phase-number">4</div>
-                    <div class="phase-content">
-                        <h3>Distribuir</h3>
-                        <p>Implementar estratégias de tráfego pago para gerar vendas imediatas.</p>
-                    </div>
-                </div>
-                <div class="phase-item">
-                    <div class="phase-number">5</div>
-                    <div class="phase-content">
-                        <h3>Duplicar</h3>
-                        <p>Analisar métricas, otimizar campanhas e escalar os resultados agressivamente.</p>
-                    </div>
-                </div>
-                <div class="phase-item">
-                    <div class="phase-number">6</div>
-                    <div class="phase-content">
-                        <h3>Dominar</h3>
-                        <p>Consolidar os ganhos, gerenciar o fluxo de caixa e planejar a sustentabilidade.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- PLANILHA -->
+    <section id="planilha" class="secao">
+      <h2>Planilha</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Categoria</th>
+            <th>Subcategoria</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+      </table>
     </section>
 
-    <section id="results">
-        <div class="container">
-            <h2>Resultados Reais de Alunos</h2>
-            <p class="section-subtitle">Pessoas comuns que implementaram o método e transformaram suas vidas</p>
-            <div class="results-grid">
-                <div class="result-card">
-                    <img src="img/result-1.jpg" alt="Ana - Professora">
-                    <div class="result-text">
-                        <h4>R$43.000 em 6 dias</h4>
-                        <h3>Ana - Professora de Inglês</h3>
-                        <p>"Eu era professora de inglês e sempre sonhei em ter meu próprio negócio online. Com o Método 6D, criei um curso de 'Inglês para Entrevistas em Multinacionais' que gerou R$43.000 no primeiro lançamento. O mais incrível é que eu não tinha experiência nenhuma com marketing digital!"</p>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="img/result-2.jpg" alt="Marcos - Marketing">
-                    <div class="result-text">
-                        <h4>R$108.000 em 6 dias</h4>
-                        <h3>Marcos - Especialista em Marketing</h3>
-                        <p>"Eu já tinha conhecimento em marketing digital, mas nunca tinha conseguido escalar meus resultados. Aplicando o sistema de reinvestimento inteligente da fase Duplicar, consegui transformar R$2.700 em R$108.000 em apenas 6 dias. Foi simplesmente surreal!"</p>
-                    </div>
-                </div>
-                <div class="result-card">
-                    <img src="img/result-3.jpg" alt="Patrícia - Coach">
-                    <div class="result-text">
-                        <h4>R$127.000 no primeiro lançamento</h4>
-                        <h3>Patrícia - Coach de Produtividade</h3>
-                        <p>"Meu curso 'Produtividade Sem Estresse' gerou R$127.000 no primeiro lançamento de 6 dias. Mas o mais impressionante foi como consegui transformar esse resultado inicial em um negócio sustentável que hoje fatura mais de R$80.000 por mês de forma recorrente."</p>
-                    </div>
-                </div>
-            </div>
-            <p class="disclaimer">*Os resultados apresentados são reais, mas não representam garantia de resultados futuros. Seus resultados podem variar de acordo com seu nível de dedicação, implementação e outros fatores.</p>
-        </div>
-    </section>
+  </main>
+</div>
 
-    <section id="testimonials">
-        <div class="container">
-            <h2>Mais Histórias de Sucesso</h2>
-            <p class="section-subtitle">Veja o que mais alunos estão dizendo sobre o Método 6D</p>
-            <div class="testimonial-slider">
-                <!-- Testimonials will be loaded here by JS -->
-                <div class="testimonial-card">
-                    <p>"O Método 6D mudou minha vida. Saí de um emprego que odiava para viver 100% do meu negócio online em menos de 3 meses."</p>
-                    <div class="testimonial-author">
-                        <img src="img/testimonial-1.jpg" alt="Aluno 1">
-                        <span>Juliana S. - Terapeuta</span>
-                    </div>
-                </div>
-                 <div class="testimonial-card">
-                    <p>"Finalmente um método que entrega o que promete! Prático, direto ao ponto e com resultados reais. Bati R$88k nos primeiros 6 dias."</p>
-                    <div class="testimonial-author">
-                        <img src="img/testimonial-2.jpg" alt="Aluno 2">
-                        <span>Rafael M. - Consultor</span>
-                    </div>
-                </div>
-                 <div class="testimonial-card">
-                    <p>"O suporte da equipe é incrível! Me ajudaram a destravar em vários pontos e a escalar minhas vendas muito mais rápido do que eu imaginava."</p>
-                    <div class="testimonial-author">
-                        <img src="img/testimonial-3.jpg" alt="Aluno 3">
-                        <span>Carla P. - Designer</span>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="next"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <section id="guarantee">
-        <div class="container">
-            <h2>Sua Satisfação Garantida ou Seu Dinheiro de Volta</h2>
-            <p class="section-subtitle">Risco Zero para você experimentar o método que pode transformar sua vida financeira</p>
-            <div class="guarantee-content">
-                <div class="guarantee-text">
-                    <p>Temos tanta confiança na eficácia do Método Renda Imediata 6D que oferecemos uma garantia incondicional de 7 dias.</p>
-                    <p>Se por qualquer motivo você não ficar 100% satisfeito com o treinamento, basta nos enviar um único email dentro de 7 dias após a compra e nós devolveremos cada centavo do seu investimento. Sem perguntas, sem burocracia.</p>
-                    <p>Além disso, oferecemos uma **Garantia Condicional de Resultados:** Se você aplicar todo o método passo a passo, participar das sessões de suporte e mesmo assim não conseguir gerar pelo menos o valor do seu investimento de volta em 60 dias, nós não apenas devolveremos seu dinheiro, como também faremos uma consultoria individual gratuita para analisar seu projeto e te ajudar a ter resultados.</p>
-                    <p><strong>O risco é todo nosso. Você não tem absolutamente nada a perder!</strong></p>
-                    <a href="#checkout" class="btn-primary">QUERO COMEÇAR AGORA SEM RISCO</a>
-                </div>
-                <div class="guarantee-seal">
-                    <!-- Guarantee seal image will be placed here -->
-                    <img src="img/guarantee-placeholder.png" alt="Selo de Garantia">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="checkout">
-        <div class="container">
-            <h2>Escolha Seu Acesso e Comece Agora!</h2>
-            <p class="section-subtitle">Garanta sua vaga com condições especiais por tempo limitado</p>
-            <div class="checkout-box-redirect">
-                <h3>Opções de Acesso:</h3>
-                
-                <div class="checkout-option-redirect">
-                    <h4>Método 6D - Ebook Completo</h4>
-                    <p>O guia passo a passo para faturar R$100k em 6 dias.</p>
-                    <div class="price">R$97</div> 
-                    <a href="https://pay.kirvano.com/e7bf3ae4-c295-4a8c-a1f1-95bec5270a4e" target="_blank" class="btn-checkout-redirect">QUERO O EBOOK AGORA</a>
-                </div>
-
-                <div class="checkout-option-redirect">
-                    <h4>Método 6D - Mentoria Completa</h4>
-                    <p>Acesso ao Ebook + Acompanhamento Individual + Grupo Exclusivo.</p>
-                    <div class="price">R$997</div> 
-                    <a href="https://pay.kirvano.com/77cd82ff-d1b0-41c0-8a4b-d32ee9931dd3" target="_blank" class="btn-checkout-redirect">QUERO A MENTORIA COMPLETA</a>
-                </div>
-
-                <div class="checkout-security">
-                    <i class="fas fa-lock"></i>
-                    <p>Pagamento seguro em ambiente criptografado.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Método Renda Imediata <span>6D</span></h2>
-                    <p>Do Zero aos R$100 Mil em 6 Dias</p>
-                </div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="termos.html">Termos de Uso</a></li>
-                        <li><a href="privacidade.html">Política de Privacidade</a></li>
-                        <li><a href="sobre.html">Sobre Nós</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="mailto:suporte@metodo6d.com.br">Suporte</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                </div>
-            </div>
-            <div class="footer-disclaimer">
-                <p>Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Uma vez que você sai do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais. Os resultados referidos são da nossa experiência como empresa de marketing digital e dos nossos clientes. Não há garantias de que você alcançará os mesmos resultados usando as mesmas técnicas. Os resultados individuais variarão de pessoa para pessoa.</p>
-                <p>© 2025 Método Renda Imediata 6D - Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="floating-cta">
-        <a href="#checkout" class="btn-floating">QUERO GERAR R$100 MIL EM 6 DIAS</a>
-    </div>
-
-    <script src="countdown.js"></script>
-
-
-</body></html>
+<!-- JS EXTERNO -->
+<script src="script.js"></script>
+</body>
+</html>
