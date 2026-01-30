@@ -34,17 +34,54 @@
     </header>
 
     <!-- DASHBOARD -->
-    <section id="dashboard" class="secao ativa">
+    <section id="dashboard" class="secao ativa dashboard-premium">
 
-  <!-- CABEÇALHO -->
-  <div class="dashboard-header">
-    <div>
-      <h2>Visão Geral Financeira</h2>
-      <p class="subtitulo">Resumo consolidado dos lançamentos</p>
+  <!-- HEADER EXECUTIVO -->
+  <div class="dashboard-top">
+    <div class="dashboard-info">
+      <h1>Dashboard Financeiro</h1>
+      <p>Visão geral consolidada da saúde financeira</p>
     </div>
 
-    <img src="logo.png" class="logo" alt="Logo da empresa">
+    <div class="dashboard-logo">
+      <img src="logo.png" alt="Logo">
+    </div>
   </div>
+
+  <!-- KPIs -->
+  <div class="dashboard-kpis">
+
+    <div class="kpi-card entrada">
+      <div class="kpi-header">Entradas</div>
+      <div class="kpi-valor" id="entradas">R$ 0,00</div>
+      <div class="kpi-desc">Total recebido</div>
+    </div>
+
+    <div class="kpi-card saida">
+      <div class="kpi-header">Saídas</div>
+      <div class="kpi-valor" id="saidas">R$ 0,00</div>
+      <div class="kpi-desc">Total gasto</div>
+    </div>
+
+    <div class="kpi-card saldo">
+      <div class="kpi-header">Saldo Atual</div>
+      <div class="kpi-valor" id="saldo">R$ 0,00</div>
+      <div class="kpi-desc">Resultado líquido</div>
+    </div>
+
+  </div>
+
+  <!-- ANÁLISE -->
+  <div class="dashboard-analise">
+    <div class="analise-card">
+      <h3>Distribuição Financeira por Categoria</h3>
+      <div class="grafico-wrapper">
+        <canvas id="grafico"></canvas>
+      </div>
+    </div>
+  </div>
+
+</section>
 
   <!-- CARDS PRINCIPAIS -->
   <div class="cards-dashboard">
