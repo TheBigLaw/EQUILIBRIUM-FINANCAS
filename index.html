@@ -57,23 +57,33 @@
     </section>
 
     <!-- LANÇAMENTOS -->
-    <section id="lancamentos" class="secao">
-      <h2>Novo Lançamento</h2>
+<section id="lancamentos" class="secao">
+  <h2>Novo Lançamento</h2>
 
-      <form id="formLancamento">
-        <select id="tipo">
-          <option value="entrada">Entrada</option>
-          <option value="saida">Saída</option>
-        </select>
+  <form id="formLancamento" class="form-lancamento">
 
-        <input id="categoria" placeholder="Categoria" required>
-        <input id="subcategoria" placeholder="Subcategoria">
-        <textarea id="descricao" placeholder="Descrição"></textarea>
-        <input type="number" id="valor" placeholder="Valor" required>
+    <select id="tipo" required>
+      <option value="">Tipo</option>
+      <option value="entrada">Entrada</option>
+      <option value="saida">Saída</option>
+    </select>
 
-        <button type="submit">Salvar</button>
-      </form>
-    </section>
+    <input id="categoria" placeholder="Categoria" required>
+
+    <input
+      id="valor"
+      type="text"
+      placeholder="Valor (R$)"
+      inputmode="decimal"
+      required
+    >
+
+    <textarea id="descricao" placeholder="Descrição (opcional)"></textarea>
+
+    <button type="submit">Salvar Lançamento</button>
+  </form>
+</section>
+
 
     <!-- RELATÓRIOS -->
     <section id="relatorios" class="secao">
