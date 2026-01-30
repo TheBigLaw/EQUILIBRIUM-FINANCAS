@@ -169,3 +169,39 @@ function atualizarTabelaLancamentos() {
     </tr>
   `).join("");
 }
+
+function excluirLancamento(id) {
+  if (confirm("Deseja realmente excluir este lançamento?")) {
+    lancamentosRef.doc(id).delete();
+  }
+}
+
+function editarLancamento(id) {
+  const item = dados.find(d => d.id === id);
+  if (!item) return;
+
+  document.querySelector('[data-aba="novo"]').click();
+
+  tipo.value = item.tipo;
+  categoria.value = item.categoria;
+  subcategoria.value = item.subcategoria;
+  descricao.value = item.descricao;
+  valor.value = item.valor.toFixed(2).replace(".", ",");
+
+  formLancamento.onsubmit = e => {
+    e.preventDefault();
+
+    const valorNumerico = Number(valor.value.replace(/\./g, "").replace(",", "."));
+
+    lancamentosRef.doc(id).update({
+      tipo: tipo.value,
+      categoria: categoria.value,
+      subcategoria: subcategoria.value,
+      descricao: descricao.value,
+      valor: valorNumerico
+    });
+
+    formLancamento.reset();
+    location.reload();
+  };
+}
