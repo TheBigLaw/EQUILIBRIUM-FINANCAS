@@ -6,13 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="logo.png">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <div class="layout">
 
-  <!-- MENU LATERAL -->
+  <!-- MENU -->
   <aside class="menu" id="menu">
     <h2>Financeiro</h2>
     <button data-target="dashboard">Dashboard</button>
@@ -31,28 +30,16 @@
 
     <!-- DASHBOARD -->
     <section id="dashboard" class="secao ativa">
-
-      <div class="dashboard-header">
-        <!-- LOGO -->
-        <img src="logo.png" class="logo" alt="Logo">
-
-        <!-- FLATICON -->
-        <img src="logo.png" class="icone" alt="Ícone">
-      </div>
-
       <div class="cards">
-        <div class="card">Entradas<br><strong id="entradas">R$ 0</strong></div>
-        <div class="card">Saídas<br><strong id="saidas">R$ 0</strong></div>
-        <div class="card">Saldo<br><strong id="saldo">R$ 0</strong></div>
+        <div class="card">Entradas<br><strong id="entradas">R$ 0,00</strong></div>
+        <div class="card">Saídas<br><strong id="saidas">R$ 0,00</strong></div>
+        <div class="card">Saldo<br><strong id="saldo">R$ 0,00</strong></div>
       </div>
-
       <canvas id="grafico"></canvas>
-
     </section>
 
     <!-- LANÇAMENTOS -->
     <section id="lancamentos" class="secao">
-
       <h2>Novo Lançamento</h2>
 
       <form id="formLancamento">
@@ -68,7 +55,6 @@
 
         <button type="submit">Salvar</button>
       </form>
-
     </section>
 
     <!-- RELATÓRIOS -->
@@ -97,16 +83,16 @@
   </main>
 </div>
 
-  <!-- Seu JS -->
-<script src="script.js"></script>
-
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  
-<!-- Configuração Firebase -->
 <script src="firebase.js"></script>
+
+<!-- Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Seu JS -->
+<script src="script.js"></script>
 
 </body>
 </html>
