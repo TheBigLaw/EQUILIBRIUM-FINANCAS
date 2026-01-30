@@ -243,3 +243,71 @@ th, td {
   background: #dc3545;
   color: #fff;
 }
+
+/* ===== DASHBOARD ===== */
+
+.subtitulo {
+  color: #666;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.cards-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.card-dashboard {
+  background: #fff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-dashboard .titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+.card-dashboard strong {
+  font-size: 26px;
+}
+
+.card-dashboard small {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Cores por tipo */
+.card-dashboard.entrada {
+  border-left: 6px solid #2ecc71;
+}
+
+.card-dashboard.saida {
+  border-left: 6px solid #e74c3c;
+}
+
+.card-dashboard.saldo {
+  border-left: 6px solid #0b5ed7;
+}
+
+/* ===== GRÁFICO ===== */
+
+.grafico-box {
+  max-width: 520px;   /* 🔽 diminui tamanho */
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.grafico-box h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
