@@ -56,24 +56,34 @@
       <canvas id="grafico"></canvas>
     </section>
 
-   <!-- LANÇAMENTOS -->
-    <section id="lancamentos" class="secao">
-      <h2>Novo Lançamento</h2>
+    <!-- LANÇAMENTOS -->
+      <section id="lancamentos" class="secao">
+        <h2>Novo Lançamento</h2>
 
       <form id="formLancamento">
-        <select id="tipo">
+        <select id="tipo" required>
+          <option value="">Tipo</option>
           <option value="entrada">Entrada</option>
           <option value="saida">Saída</option>
         </select>
 
-        <input id="categoria" placeholder="Categoria" required>
-        <input id="subcategoria" placeholder="Subcategoria">
-        <textarea id="descricao" placeholder="Descrição"></textarea>
-        <input type="number" id="valor" placeholder="Valor" required>
+    <input id="categoria" placeholder="Categoria" required>
+    <input id="subcategoria" placeholder="Subcategoria">
+    <textarea id="descricao" placeholder="Descrição"></textarea>
 
-        <button type="submit">Salvar</button>
-      </form>
-    </section>
+    <!-- VALOR EM REAIS -->
+      <input
+      type="text"
+      id="valor"
+      placeholder="Valor (R$)"
+      inputmode="decimal"
+      required
+    >
+
+    <button type="submit">Salvar</button>
+  </form>
+</section>
+
 
     <!-- RELATÓRIOS -->
     <section id="relatorios" class="secao">
