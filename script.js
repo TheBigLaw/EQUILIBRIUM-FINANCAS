@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let dados = [];
   let chart;
+  let userId = null;
+  let lancamentosRef = null;
 
   // ELEMENTOS
   const tipo = document.getElementById("tipo");
@@ -27,22 +29,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function abrirSecao(id) {
-    document.querySelectorAll(".secao").forEach(secao =>
-      secao.classList.remove("ativa")
+    document.querySelectorAll(".secao").forEach(s =>
+      s.classList.remove("ativa")
     );
     document.getElementById(id).classList.add("ativa");
   }
 
-  /* ================= FIREBASE ================= */
+  /* ================= AUTH ================= */
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) return;
 
-  // usuário fixo (depois pode virar auth)
-  const userId = "usuario_demo";
+    userId = user.uid;
 
-  const lancamentosRef = db
-    .collection("users")
-    .doc(userId)
-    .collection("lancamentos");
+    lancamentosRef = db
+      .collection("users")
+      .doc(userId)
+      .collection("lancamentos");
 
+    carregarDados();
+  });
+
+  /* ================= FIRESTORE ================= */
   function carregarDados() {
     lancamentosRef
       .orderBy("criadoEm", "desc")
@@ -56,9 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= FORM ================= */
-
   document.getElementById("formLancamento").onsubmit = e => {
     e.preventDefault();
+    if (!lancamentosRef) return;
 
     lancamentosRef.add({
       tipo: tipo.value,
@@ -73,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /* ================= ATUALIZAÇÕES ================= */
-
   function atualizarTudo() {
     atualizarDashboard();
     atualizarTabela();
@@ -82,8 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function atualizarDashboard() {
-    let entradas = 0;
-    let saidas = 0;
+    let entradas = 0, saidas = 0;
 
     dados.forEach(d => {
       d.tipo === "entrada"
@@ -110,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function atualizarRelatorio() {
     const categorias = [...new Set(dados.map(d => d.categoria))];
-
     textoRelatorio.innerHTML = `
       Total de lançamentos: <b>${dados.length}</b><br>
       Categorias distintas: <b>${categorias.length}</b>
@@ -119,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function atualizarGrafico() {
     const mapa = {};
-
     dados.forEach(d => {
       mapa[d.categoria] = (mapa[d.categoria] || 0) + d.valor;
     });
@@ -130,12 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
       type: "pie",
       data: {
         labels: Object.keys(mapa),
-        datasets: [{
-          data: Object.values(mapa)
-        }]
+        datasets: [{ data: Object.values(mapa) }]
       }
     });
   }
 
-  carregarDados();
 });
