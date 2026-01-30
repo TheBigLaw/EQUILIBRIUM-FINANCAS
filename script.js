@@ -129,14 +129,18 @@ document.addEventListener("DOMContentLoaded", () => {
       mapa[d.categoria] = (mapa[d.categoria] || 0) + d.valor;
     });
 
-    if (chart) chart.destroy();
-
     chart = new Chart(grafico, {
-      type: "pie",
-      data: {
-        labels: Object.keys(mapa),
-        datasets: [{ data: Object.values(mapa) }]
-      }
+  type: "pie",
+  data: {
+    labels: Object.keys(mapa),
+    datasets: [{
+      data: Object.values(mapa)
+      }]
+    },
+    options: {
+    responsive: true,
+    maintainAspectRatio: false
+        }
     });
   }
 
