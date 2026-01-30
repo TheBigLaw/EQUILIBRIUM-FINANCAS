@@ -1,132 +1,141 @@
-let dados = [];
-let chart;
-const tipo = document.getElementById("tipo");
-const categoria = document.getElementById("categoria");
-const subcategoria = document.getElementById("subcategoria");
-const descricao = document.getElementById("descricao");
-const valor = document.getElementById("valor");
+document.addEventListener("DOMContentLoaded", () => {
 
-// MENU
-document.getElementById("menuToggle").addEventListener("click", () => {
-  document.getElementById("menu").classList.toggle("fechado");
-});
+  let dados = [];
+  let chart;
 
-// NAVEGAÇÃO
-document.querySelectorAll(".menu button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    abrirSecao(btn.dataset.target);
-  });
-});
+  // ELEMENTOS
+  const tipo = document.getElementById("tipo");
+  const categoria = document.getElementById("categoria");
+  const subcategoria = document.getElementById("subcategoria");
+  const descricao = document.getElementById("descricao");
+  const valor = document.getElementById("valor");
 
-function abrirSecao(id) {
-  document.querySelectorAll(".secao").forEach(secao => {
-    secao.classList.remove("ativa");
-  });
-  document.getElementById(id).classList.add("ativa");
-}
+  const entradasEl = document.getElementById("entradas");
+  const saidasEl = document.getElementById("saidas");
+  const saldoEl = document.getElementById("saldo");
+  const tabela = document.getElementById("tabela");
+  const textoRelatorio = document.getElementById("textoRelatorio");
+  const grafico = document.getElementById("grafico");
 
-// FORMULÁRIO
-document.getElementById("formLancamento").addEventListener("submit", salvar);
-
-function salvar(e) {
-  e.preventDefault();
-
-  const novo = {
-    tipo: tipo.value,
-    categoria: categoria.value,
-    sub: subcategoria.value,
-    descricao: descricao.value,
-    valor: Number(valor.value),
-    criadoEm: new Date()
+  /* ================= MENU ================= */
+  document.getElementById("menuToggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("fechado");
   };
 
-  db.collection("users")
-    .doc(userId)
-    .collection("lancamentos")
-    .add(novo)
-    .then(() => {
-      e.target.reset();
-    });
-}
-
-function carregarDados() {
-  db.collection("users")
-    .doc(userId)
-    .collection("lancamentos")
-    .orderBy("valor", "asc"))
-    .onSnapshot(snapshot => {
-      dados = snapshot.docs.map(doc => doc.data());
-      atualizarTudo();
-    });
-}
-
-
-// ATUALIZAÇÕES
-function atualizarTudo() {
-  atualizarDashboard();
-  atualizarTabela();
-  atualizarRelatorio();
-  atualizarGrafico();
-}
-
-function atualizarDashboard() {
-  let entradas = 0;
-  let saidas = 0;
-
-  dados.forEach(d => {
-    d.tipo === "entrada" ? entradas += d.valor : saidas += d.valor;
+  document.querySelectorAll(".menu button").forEach(btn => {
+    btn.onclick = () => abrirSecao(btn.dataset.target);
   });
 
-  document.getElementById("entradas").innerText = `R$ ${entradas.toFixed(2)}`;
-  document.getElementById("saidas").innerText = `R$ ${saidas.toFixed(2)}`;
-  document.getElementById("saldo").innerText = `R$ ${(entradas - saidas).toFixed(2)}`;
-}
+  function abrirSecao(id) {
+    document.querySelectorAll(".secao").forEach(secao =>
+      secao.classList.remove("ativa")
+    );
+    document.getElementById(id).classList.add("ativa");
+  }
 
-function atualizarTabela() {
-  const tbody = document.getElementById("tabela");
-  tbody.innerHTML = "";
+  /* ================= FIREBASE ================= */
 
-  dados.forEach(d => {
-    tbody.innerHTML += `
+  // usuário fixo (depois pode virar auth)
+  const userId = "usuario_demo";
+
+  const lancamentosRef = db
+    .collection("users")
+    .doc(userId)
+    .collection("lancamentos");
+
+  function carregarDados() {
+    lancamentosRef
+      .orderBy("criadoEm", "desc")
+      .onSnapshot(snapshot => {
+        dados = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        atualizarTudo();
+      });
+  }
+
+  /* ================= FORM ================= */
+
+  document.getElementById("formLancamento").onsubmit = e => {
+    e.preventDefault();
+
+    lancamentosRef.add({
+      tipo: tipo.value,
+      categoria: categoria.value,
+      subcategoria: subcategoria.value || "",
+      descricao: descricao.value || "",
+      valor: Number(valor.value),
+      criadoEm: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      e.target.reset();
+    });
+  };
+
+  /* ================= ATUALIZAÇÕES ================= */
+
+  function atualizarTudo() {
+    atualizarDashboard();
+    atualizarTabela();
+    atualizarRelatorio();
+    atualizarGrafico();
+  }
+
+  function atualizarDashboard() {
+    let entradas = 0;
+    let saidas = 0;
+
+    dados.forEach(d => {
+      d.tipo === "entrada"
+        ? entradas += d.valor
+        : saidas += d.valor;
+    });
+
+    entradasEl.textContent = `R$ ${entradas.toFixed(2)}`;
+    saidasEl.textContent = `R$ ${saidas.toFixed(2)}`;
+    saldoEl.textContent = `R$ ${(entradas - saidas).toFixed(2)}`;
+  }
+
+  function atualizarTabela() {
+    tabela.innerHTML = dados.map(d => `
       <tr>
         <td>${d.tipo}</td>
         <td>${d.categoria}</td>
-        <td>${d.sub}</td>
+        <td>${d.subcategoria}</td>
         <td>${d.descricao}</td>
         <td>R$ ${d.valor.toFixed(2)}</td>
       </tr>
+    `).join("");
+  }
+
+  function atualizarRelatorio() {
+    const categorias = [...new Set(dados.map(d => d.categoria))];
+
+    textoRelatorio.innerHTML = `
+      Total de lançamentos: <b>${dados.length}</b><br>
+      Categorias distintas: <b>${categorias.length}</b>
     `;
-  });
-}
+  }
 
-function atualizarRelatorio() {
-  const categorias = [...new Set(dados.map(d => d.categoria))];
+  function atualizarGrafico() {
+    const mapa = {};
 
-  document.getElementById("textoRelatorio").innerHTML = `
-    Total de lançamentos: ${dados.length}<br>
-    Categorias distintas: ${categorias.length}
-  `;
-}
+    dados.forEach(d => {
+      mapa[d.categoria] = (mapa[d.categoria] || 0) + d.valor;
+    });
 
-function atualizarGrafico() {
-  const categorias = {};
+    if (chart) chart.destroy();
 
-  dados.forEach(d => {
-    categorias[d.categoria] = (categorias[d.categoria] || 0) + d.valor;
-  });
+    chart = new Chart(grafico, {
+      type: "pie",
+      data: {
+        labels: Object.keys(mapa),
+        datasets: [{
+          data: Object.values(mapa)
+        }]
+      }
+    });
+  }
 
-  const ctx = document.getElementById("grafico");
-
-  if (chart) chart.destroy();
-
-  chart = new Chart(ctx, {
-    type: "pie",
-    data: {
-      labels: Object.keys(categorias),
-      datasets: [{
-        data: Object.values(categorias),
-        backgroundColor: ["#4facfe", "#43e97b", "#74b9ff"]
-      }]
-    }
-  });
-}
+  carregarDados();
+});
