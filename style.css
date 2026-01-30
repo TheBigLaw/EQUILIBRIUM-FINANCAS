@@ -173,3 +173,73 @@ th, td {
   transform: translateY(-1px);
   box-shadow: 0 8px 18px rgba(11,94,215,0.35);
 }
+/* ===== ABAS ===== */
+.abas-lancamento {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.aba {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #e9eef7;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.aba.ativa {
+  background: #0b5ed7;
+  color: #fff;
+}
+
+.conteudo-aba {
+  display: none;
+}
+
+.conteudo-aba.ativa {
+  display: block;
+}
+
+/* ===== TABELA ===== */
+.tabela-lancamentos {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.tabela-lancamentos th,
+.tabela-lancamentos td {
+  padding: 12px;
+  text-align: left;
+}
+
+.tabela-lancamentos th {
+  background: #f3f6fb;
+  font-weight: 600;
+}
+
+.tabela-lancamentos tr:nth-child(even) {
+  background: #fafcff;
+}
+
+.btn-acao {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-editar {
+  background: #ffc107;
+  color: #000;
+}
+
+.btn-excluir {
+  background: #dc3545;
+  color: #fff;
+}
