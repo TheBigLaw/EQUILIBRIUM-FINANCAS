@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <title>Dashboard Financeiro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- FAVICON -->
   <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
 
 <div class="layout">
 
-  <!-- MENU -->
+  <!-- MENU LATERAL -->
   <aside class="menu" id="menu">
     <h2>Financeiro</h2>
     <button data-target="dashboard">Dashboard</button>
@@ -23,6 +27,7 @@
   <!-- CONTEÚDO -->
   <main class="conteudo">
 
+    <!-- TOPO -->
     <header class="topo">
       <button class="menu-btn" id="menuToggle">☰</button>
       <span>Painel Financeiro Empresarial</span>
@@ -30,11 +35,24 @@
 
     <!-- DASHBOARD -->
     <section id="dashboard" class="secao ativa">
+
+      <!-- CABEÇALHO DO DASHBOARD -->
+      <div class="dashboard-header">
+        <!-- LOGO PRINCIPAL -->
+        <img src="logo.png" class="logo" alt="Logo da empresa">
+
+        <!-- ÍCONE / FLATICON -->
+        <img src="logo.png" class="icone" alt="Ícone">
+      </div>
+
+      <!-- CARDS -->
       <div class="cards">
         <div class="card">Entradas<br><strong id="entradas">R$ 0,00</strong></div>
         <div class="card">Saídas<br><strong id="saidas">R$ 0,00</strong></div>
         <div class="card">Saldo<br><strong id="saldo">R$ 0,00</strong></div>
       </div>
+
+      <!-- GRÁFICO -->
       <canvas id="grafico"></canvas>
     </section>
 
@@ -83,15 +101,15 @@
   </main>
 </div>
 
-<!-- Firebase -->
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 <script src="firebase.js"></script>
 
-<!-- Chart -->
+<!-- CHART -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Seu JS -->
+<!-- SCRIPT PRINCIPAL -->
 <script src="script.js"></script>
 
 </body>
