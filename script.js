@@ -139,3 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+document.querySelectorAll(".aba").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".aba").forEach(b => b.classList.remove("ativa"));
+    document.querySelectorAll(".conteudo-aba").forEach(c => c.classList.remove("ativa"));
+
+    btn.classList.add("ativa");
+    document.getElementById("aba-" + btn.dataset.aba).classList.add("ativa");
+  };
+});
