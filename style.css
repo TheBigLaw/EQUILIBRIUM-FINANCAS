@@ -87,3 +87,89 @@ th, td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
+
+/* ===== FORM LANÇAMENTOS ===== */
+
+.form-lancamento {
+  max-width: 520px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  display: grid;
+  gap: 18px;
+}
+
+.form-lancamento h2 {
+  margin-bottom: 10px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d0d7e2;
+  font-size: 15px;
+  background: #f9fbff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
+  border-color: #0b5ed7;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(11,94,215,0.12);
+}
+
+/* SELECT CUSTOM */
+.campo select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #555 50%),
+    linear-gradient(135deg, #555 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 4px),
+    calc(100% - 13px) calc(50% - 4px);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* BOTÃO */
+.btn-salvar {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #0b5ed7, #1f7aff);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-salvar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(11,94,215,0.35);
+}
