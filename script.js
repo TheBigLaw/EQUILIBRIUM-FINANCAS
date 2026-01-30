@@ -81,11 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= ATUALIZAÇÕES ================= */
   function atualizarTudo() {
-    atualizarDashboard();
-    atualizarTabela();
-    atualizarRelatorio();
-    atualizarGrafico();
-  }
+  atualizarDashboard();
+  atualizarTabela();
+  atualizarRelatorio();
+  atualizarGrafico();
+  atualizarTabelaLancamentos();
+}
+
 
   function atualizarDashboard() {
     let entradas = 0, saidas = 0;
@@ -149,3 +151,21 @@ document.querySelectorAll(".aba").forEach(btn => {
     document.getElementById("aba-" + btn.dataset.aba).classList.add("ativa");
   };
 });
+
+const tabelaLancamentos = document.getElementById("tabelaLancamentos");
+
+function atualizarTabelaLancamentos() {
+  tabelaLancamentos.innerHTML = dados.map(d => `
+    <tr>
+      <td>${d.tipo}</td>
+      <td>${d.categoria}</td>
+      <td>${d.subcategoria || ""}</td>
+      <td>${d.descricao || ""}</td>
+      <td>R$ ${d.valor.toFixed(2).replace(".", ",")}</td>
+      <td>
+        <button class="btn-acao btn-editar" onclick="editarLancamento('${d.id}')">Editar</button>
+        <button class="btn-acao btn-excluir" onclick="excluirLancamento('${d.id}')">Excluir</button>
+      </td>
+    </tr>
+  `).join("");
+}
