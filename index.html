@@ -36,21 +36,46 @@
     <!-- DASHBOARD -->
     <section id="dashboard" class="secao ativa">
 
-      <!-- CABEÇALHO DO DASHBOARD -->
-      <div class="dashboard-header">
-        <!-- LOGO PRINCIPAL -->
-        <img src="logo.png" class="logo" alt="Logo da empresa">
+  <!-- CABEÇALHO -->
+  <div class="dashboard-header">
+    <div>
+      <h2>Visão Geral Financeira</h2>
+      <p class="subtitulo">Resumo consolidado dos lançamentos</p>
+    </div>
 
-        <!-- ÍCONE / FLATICON -->
-        <img src="logo.png" class="icone" alt="Ícone">
-      </div>
+    <img src="logo.png" class="logo" alt="Logo da empresa">
+  </div>
 
-      <!-- CARDS -->
-      <div class="cards">
-        <div class="card">Entradas<br><strong id="entradas">R$ 0,00</strong></div>
-        <div class="card">Saídas<br><strong id="saidas">R$ 0,00</strong></div>
-        <div class="card">Saldo<br><strong id="saldo">R$ 0,00</strong></div>
-      </div>
+  <!-- CARDS PRINCIPAIS -->
+  <div class="cards-dashboard">
+
+    <div class="card-dashboard entrada">
+      <span class="titulo">Entradas</span>
+      <strong id="entradas">R$ 00,00</strong>
+      <small>Total recebido</small>
+    </div>
+
+    <div class="card-dashboard saida">
+      <span class="titulo">Saídas</span>
+      <strong id="saidas">R$ 00,00</strong>
+      <small>Total gasto</small>
+    </div>
+
+    <div class="card-dashboard saldo">
+      <span class="titulo">Saldo Atual</span>
+      <strong id="saldo">R$ 00,00</strong>
+      <small>Resultado líquido</small>
+    </div>
+
+  </div>
+
+  <!-- ÁREA DO GRÁFICO -->
+  <div class="grafico-box">
+    <h3>Distribuição por Categoria</h3>
+    <canvas id="grafico"></canvas>
+  </div>
+
+</section>
 
       <!-- GRÁFICO -->
       <canvas id="grafico"></canvas>
